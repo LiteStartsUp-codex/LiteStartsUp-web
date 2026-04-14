@@ -20,9 +20,9 @@ export async function POST(request: Request) {
     }
 
     // Send email
-    await resend.emails.send({
-      from: "contacto@reohelia.resend.app", // Dominio verificado por Resend
-      to: "f.pereiraalarcn@gmail.com", // Replace with your email
+    const { data, error } = await resend.emails.send({
+      from: "LiteStartUp <onboarding@resend.dev>",
+      to: ["rebolledaver@gmail.com"],
       subject: "Nuevo mensaje de contacto - LiteStartUp",
       html: `
         <h2>Nuevo mensaje de contacto</h2>
@@ -34,7 +34,12 @@ export async function POST(request: Request) {
       `,
     });
 
-    return Response.json({ success: true });
+    if (error) {
+      console.error("Resend error:", error);
+      return Response.json({ error: error.message }, { status: 500 });
+    }
+
+    return Response.json({ success: true, data });
   } catch (error) {
     console.error("Error sending email:", error);
     return Response.json({ error: "Error sending email" }, { status: 500 });

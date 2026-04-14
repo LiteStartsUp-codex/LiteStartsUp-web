@@ -17,9 +17,13 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
-import dynamic from "next/dynamic";
+//import dynamic from "next/dynamic";
+import { Roboto_Mono } from "next/font/google";
 import Dither from "@/components/Dither";
 import LanyardDynamic from "@/components/LanyardDynamic";
+
+// --- Font ---
+const robotoMono = Roboto_Mono({ subsets: ["latin"] });
 
 // --- Types ---
 interface TeamMember {
@@ -435,7 +439,9 @@ export default function Home() {
               </span>
             </h1>
 
-            <p className="max-w-2xl text-lg md:text-xl text-gray-400 mb-10 font-light leading-relaxed">
+            <p
+              className={`${robotoMono.className} max-w-2xl text-lg md:text-xl text-gray-400 mb-10 font-light leading-relaxed`}
+            >
               Bienvenido al epicentro del desarrollo. Transformamos ideas
               audaces en plataformas digitales de alto impacto mediante
               metodologías ágiles y talento global de excelencia.
@@ -810,43 +816,51 @@ export default function Home() {
               {/* Contenido Dinámico con transiciones */}
               <div className="flex-grow flex items-center">
                 {activeTab === "buscamos" ? (
-              <div className="animate-in fade-in slide-in-from-right-4 duration-500 w-full">
-      <ul className="space-y-4">
-        {[
-          "Personas proactivas con actitud colaborativa.",
-          "Interés por resolver desafíos técnicos con excelencia.",
-          "Capacidad de aprendizaje constante y pensamiento crítico."
-        ].map((item, index) => (
-          <li 
-            key={index}
-            className="group flex gap-4 items-center p-4 rounded-xl transition-all duration-300 hover:bg-purple-500/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] border border-transparent hover:border-purple-500/30"
-          >
-            <span className="text-purple-400 text-lg group-hover:scale-110 transition-transform">✦</span>
-            <span className="text-gray-200 text-base leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  ) : (
-    <div className="animate-in fade-in slide-in-from-left-4 duration-500 w-full">
-      <ul className="space-y-4">
-        {[
-          "Crecimiento en proyectos reales y con impacto.",
-          "Trabajo en equipo transparente y dinámico.",
-          "Cultura de innovación y uso responsable de IA."
-        ].map((item, index) => (
-          <li 
-            key={index}
-            className="group flex gap-4 items-center p-4 rounded-xl transition-all duration-300 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] border border-transparent hover:border-blue-500/30"
-          >
-            <span className="text-blue-400 text-lg group-hover:scale-110 transition-transform">✦</span>
-            <span className="text-gray-200 text-base leading-relaxed">{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )}
-</div>
+                  <div className="animate-in fade-in slide-in-from-right-4 duration-500 w-full">
+                    <ul className="space-y-4">
+                      {[
+                        "Personas proactivas con actitud colaborativa.",
+                        "Interés por resolver desafíos técnicos con excelencia.",
+                        "Capacidad de aprendizaje constante y pensamiento crítico.",
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          className="group flex gap-4 items-center p-4 rounded-xl transition-all duration-300 hover:bg-purple-500/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] border border-transparent hover:border-purple-500/30"
+                        >
+                          <span className="text-purple-400 text-lg group-hover:scale-110 transition-transform">
+                            ✦
+                          </span>
+                          <span className="text-gray-200 text-base leading-relaxed">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : (
+                  <div className="animate-in fade-in slide-in-from-left-4 duration-500 w-full">
+                    <ul className="space-y-4">
+                      {[
+                        "Crecimiento en proyectos reales y con impacto.",
+                        "Trabajo en equipo transparente y dinámico.",
+                        "Cultura de innovación y uso responsable de IA.",
+                      ].map((item, index) => (
+                        <li
+                          key={index}
+                          className="group flex gap-4 items-center p-4 rounded-xl transition-all duration-300 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] border border-transparent hover:border-blue-500/30"
+                        >
+                          <span className="text-blue-400 text-lg group-hover:scale-110 transition-transform">
+                            ✦
+                          </span>
+                          <span className="text-gray-200 text-base leading-relaxed">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -956,7 +970,7 @@ export default function Home() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full md:w-auto px-8 py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg hover:from-purple-600 hover:to-blue-600 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-[#050505] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full md:w-auto px-8 py-4 border border-purple-500 bg-purple-500/20 text-white font-semibold rounded-lg shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:bg-purple-500/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-[#050505] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
               </button>

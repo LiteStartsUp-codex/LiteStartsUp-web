@@ -1033,11 +1033,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-3 gap-6 text-center">
               <div className="group cursor-default">
-                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-purple-400 group-hover:to-purple-600 transition-all duration-300">8</p>
+                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-purple-400 group-hover:to-purple-600 transition-all duration-300">10</p>
                 <p className="text-xs text-gray-600 mt-2 uppercase tracking-widest">Talentos</p>
               </div>
               <div className="border-x border-white/5 group cursor-default">
-                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-blue-400 group-hover:to-blue-600 transition-all duration-300">4</p>
+                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-blue-400 group-hover:to-blue-600 transition-all duration-300">5</p>
                 <p className="text-xs text-gray-600 mt-2 uppercase tracking-widest">Países</p>
               </div>
               <div className="group cursor-default">

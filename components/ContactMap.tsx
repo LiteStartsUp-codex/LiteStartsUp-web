@@ -2,7 +2,7 @@
 
 import { useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { ZoomIn, ZoomOut, MapPin, ChevronUp, ChevronDown } from "lucide-react";
+import { ChevronUp, ChevronDown, MapPin } from "lucide-react";
 import {
   Map,
   MapArc,
@@ -10,6 +10,7 @@ import {
   MarkerContent,
   MarkerLabel,
   MarkerPopup,
+  MapControls,
 } from "@/components/ui/map";
 import type MapLibreGL from "maplibre-gl";
 
@@ -64,34 +65,28 @@ export function ContactMap() {
   const [showHubPopup, setShowHubPopup] = useState(false);
   const [showLegend, setShowLegend] = useState(true);
 
-  const handleZoom = (direction: "in" | "out") => {
-    if (!mapRef.current) return;
-    const currentZoom = mapRef.current.getZoom();
-    const newZoom = direction === "in" ? currentZoom + 1 : currentZoom - 1;
-    mapRef.current.flyTo({ zoom: newZoom, duration: 500 });
-  };
-
   // Prevent page scroll when zooming on map
   useEffect(() => {
     const container = mapContainerRef.current;
     if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
-      if (container.contains(e.target as Node)) {
-        e.preventDefault();
-      }
+      // Stop event from bubbling to parent (page scroll)
+      e.stopPropagation();
     };
 
-    container.addEventListener("wheel", handleWheel, { passive: false });
+    // Use capture phase to intercept the event before it propagates
+    container.addEventListener("wheel", handleWheel, { capture: true });
     return () => {
-      container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("wheel", handleWheel, true);
     };
   }, []);
 
   return (
     <div 
       ref={mapContainerRef}
-      className="relative h-full w-full rounded-xl overflow-hidden border border-white/10"
+      className="relative h-full w-full rounded-xl border border-white/10"
+      style={{ overflow: "hidden" }}
     >
       <Map
         ref={mapRef}
@@ -179,25 +174,17 @@ export function ContactMap() {
             </div>
           </MarkerPopup>
         </MapMarker>
-      </Map>
 
-      {/* Zoom Controls - Top Right */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2 z-10">
-        <button
-          onClick={() => handleZoom("in")}
-          className="p-2 rounded-lg bg-purple-600/80 hover:bg-purple-600 text-white shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 border border-purple-400/30"
-          aria-label="Zoom in"
-        >
-          <ZoomIn className="w-5 h-5" />
-        </button>
-        <button
-          onClick={() => handleZoom("out")}
-          className="p-2 rounded-lg bg-purple-600/80 hover:bg-purple-600 text-white shadow-lg transition-all duration-200 hover:scale-110 active:scale-95 border border-purple-400/30"
-          aria-label="Zoom out"
-        >
-          <ZoomOut className="w-5 h-5" />
-        </button>
-      </div>
+        {/* Map Controls */}
+        <MapControls 
+          position="top-right"
+          showZoom
+          showCompass
+          showLocate
+          showFullscreen
+          className="[&_button]:bg-purple-600/80 [&_button]:hover:bg-purple-600 [&_button]:text-white [&_button]:border [&_button]:border-purple-400/30 [&_button]:shadow-lg [&_button]:transition-all [&_button]:hover:scale-110 [&_button]:active:scale-95 [&>div]:border-purple-400/30 [&>div]:bg-purple-950/80 [&>div]:border [&>div]:shadow-lg"
+        />
+      </Map>
 
       {/* Info legend - Bottom Left with Toggle */}
       <div className="absolute bottom-4 left-4 z-10">

@@ -122,6 +122,24 @@ const teamMembers: TeamMember[] = [
     country: "República Dominicana",
     flagPath: "/flags/rd.svg",
   },
+  {
+    name: "Florencia Pons",
+    role: "Audiovisual",
+    description: "Producción y edición audiovisual que da vida a la identidad visual de la marca.",
+    avatarColor: "from-fuchsia-500 to-rose-500",
+    image: "/team/Flor.png",
+    country: "Argentina",
+    flagPath: "/flags/argentina.png",
+  },
+  {
+    name: "Lessli Álvarez",
+    role: "Desarrolladora Java",
+    description: "Desarrollo de aplicaciones robustas y escalables con arquitecturas Java de alto rendimiento.",
+    avatarColor: "from-yellow-500 to-amber-600",
+    image: "/team/Lessli.png",
+    country: "México",
+    flagPath: "/flags/Mexico.webp",
+  },
 ];
 
 const workflowSteps: WorkflowStep[] = [
@@ -555,14 +573,82 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {teamMembers.map((member, index) => (
+          {/* Founder card — Felipe Pereira */}
+          {(() => {
+            const founder = teamMembers[0];
+            return (
+              <div className="group relative p-1 rounded-2xl bg-gradient-to-r from-white/10 via-white/5 to-transparent hover:from-white/20 transition-all duration-500 mb-6">
+                <div className="h-full px-8 py-8 rounded-xl bg-[#0a0a0a]/50 backdrop-blur-md border border-white/5 overflow-hidden relative flex flex-col sm:flex-row items-center sm:items-center gap-8">
+                  {/* Photo */}
+                  <div className={`w-40 h-40 md:w-48 md:h-48 shrink-0 rounded-full bg-gradient-to-br ${founder.avatarColor} p-1 shadow-lg relative z-10`}>
+                    <div className="w-full h-full bg-[#0a0a0a] rounded-full overflow-hidden">
+                      <Image
+                        src={founder.image!}
+                        alt={founder.name}
+                        width={192}
+                        height={192}
+                        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="flex flex-col items-center sm:items-start text-center sm:text-left relative z-10 flex-1">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-3">
+                      Fundador
+                    </span>
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-2xl md:text-3xl font-black text-white">{founder.name}</h3>
+                      <img src={founder.flagPath} alt={founder.country} width={28} height={21} className="rounded-sm flex-shrink-0" />
+                    </div>
+                    <p className="text-base font-medium text-purple-400 mb-3">{founder.role}</p>
+                    <p className="text-sm text-gray-400 leading-relaxed font-light max-w-xl mb-4">{founder.description}</p>
+
+                    {/* Tagline highlight */}
+                    <p className="border-l-2 border-purple-500/60 pl-3 text-sm text-gray-300 italic font-light text-left">
+                      2+ años liderando proyectos de IA en I+D
+                    </p>
+                  </div>
+
+                  {/* Social links — right column */}
+                  <div className="hidden sm:flex flex-col items-center justify-center gap-3 shrink-0 relative z-10">
+                    <a
+                      href="https://www.linkedin.com/in/felipe-pereira-alarcon/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn de Felipe Pereira"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#0A66C2]/15 border border-[#0A66C2]/30 text-[#0A66C2] hover:bg-[#0A66C2]/25 hover:border-[#0A66C2]/50 transition-all duration-200 text-xs font-semibold whitespace-nowrap"
+                    >
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                      LinkedIn
+                    </a>
+                    <a
+                      href="https://fpereiradev.sppa.cl/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Portfolio de Felipe Pereira"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/15 text-gray-300 hover:bg-white/10 hover:border-white/30 hover:text-white transition-all duration-200 text-xs font-semibold whitespace-nowrap"
+                    >
+                      <Globe className="w-3.5 h-3.5" />
+                      Portfolio
+                    </a>
+                  </div>
+
+                  {/* Hover glow */}
+                  <div className={`absolute -top-24 -left-24 w-72 h-72 bg-gradient-to-br ${founder.avatarColor} rounded-full blur-[80px] opacity-0 group-hover:opacity-15 transition-opacity duration-500 z-0`}></div>
+                </div>
+              </div>
+            );
+          })()}
+
+          {/* Rest of the team — 3×3 grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {teamMembers.slice(1).map((member, index) => (
               <div
                 key={index}
                 className="group relative p-1 rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-white/20 transition-all duration-500"
               >
                 <div className="h-full p-6 rounded-xl bg-[#0a0a0a]/50 backdrop-blur-md border border-white/5 overflow-hidden relative flex flex-col items-center text-center">
-                  {/* Avatar Placeholder / Gradient */}
                   <div
                     className={`w-36 h-36 md:w-40 md:h-40 rounded-full mb-6 relative z-10 bg-gradient-to-br ${member.avatarColor} p-1 shadow-lg`}
                   >
@@ -573,7 +659,7 @@ export default function Home() {
                           alt={member.name}
                           width={160}
                           height={160}
-                          className={`w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ${member.name === "Felipe Pereira" ? "object-center" : "object-top"}`}
+                          className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
                         />
                       ) : (
                         <span className="text-4xl font-black text-white mix-blend-screen">
@@ -602,7 +688,6 @@ export default function Home() {
                     {member.description}
                   </p>
 
-                  {/* Hover effect glow */}
                   <div
                     className={`absolute -top-20 -left-20 md:-bottom-20 md:-right-20 w-40 h-40 md:w-60 md:h-60 bg-gradient-to-br ${member.avatarColor} rounded-full blur-[60px] opacity-0 group-hover:opacity-20 transition-opacity duration-500 z-0`}
                   ></div>

@@ -14,6 +14,7 @@ import {
   Unlock,
   Menu,
   X,
+  Mail,
 } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -21,6 +22,7 @@ import React, { useState } from "react";
 import { Roboto_Mono } from "next/font/google";
 import Dither from "@/components/Dither";
 import LanyardDynamic from "@/components/LanyardDynamic";
+import { ContactMap } from "@/components/ContactMap";
 
 // --- Font ---
 const robotoMono = Roboto_Mono({ subsets: ["latin"] });
@@ -172,8 +174,8 @@ const Navbar = () => {
             <div className="w-full h-full bg-black rounded-md flex items-center justify-center">
               {/* Fallback to text if logo.png is missing or fails to load, but we try image first */}
               <Image
-                src="/logo.png"
-                alt="LiteStartUp Logo"
+                src="/LogoLiteStartsUp.png"
+                alt="LiteStartsUp Logo"
                 width={32}
                 height={32}
                 className="object-contain transition-transform group-hover:scale-110"
@@ -187,7 +189,7 @@ const Navbar = () => {
             </div>
           </div>
           <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 tracking-tight">
-            LiteStartUp
+            LiteStartsUp
           </span>
         </Link>
         <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-300">
@@ -415,7 +417,7 @@ export default function Home() {
 
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-6 leading-[1.1] relative z-10">
               <span className="block text-white drop-shadow-lg">
-                LiteStartUp
+                LiteStartsUp
               </span>
 
               {/* Premium Text Effect para Sociedad PA */}
@@ -630,7 +632,7 @@ export default function Home() {
                 </span>
               </h2>
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light border-l-4 border-pink-500 pl-6">
-                En LiteStartUp la inclusión no es una moda, es nuestro
+                En LiteStartsUp la inclusión no es una moda, es nuestro
                 ecosistema. Actualmente, un pilar fundamental de nuestro equipo
                 son mujeres, y trabajamos activamente para alcanzar la paridad
                 total.
@@ -775,7 +777,7 @@ export default function Home() {
                 para afrontar los desafíos del futuro.
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl font-light leading-relaxed text-justify">
-                ¿Quieres sumarte a nuestra base de Talentos? En LiteStartUp
+                ¿Quieres sumarte a nuestra base de Talentos? En LiteStartsUp
                 valoramos la iniciativa, el trabajo en equipo y la pasión por
                 construir software que marque la diferencia.
               </p>
@@ -882,166 +884,295 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="max-w-2xl mx-auto">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Nombre *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="Tu nombre completo"
-                  />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-stretch">
+            {/* Form — left 3 columns */}
+            <div className="lg:col-span-3 flex flex-col">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4 h-full">
+                {/* Row 1: nombre | email */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Nombre *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      placeholder="Tu nombre completo"
+                    />
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                      placeholder="tu@email.com"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-              </div>
-              <div>
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Teléfono
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                  placeholder="+56 9 1234 5678"
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Mensaje *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={5}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
-                  placeholder="Cuéntanos sobre tu proyecto o consulta..."
-                />
-              </div>
-              {/* Honeypot for anti-spam */}
-              <input
-                type="text"
-                name="honeypot"
-                value={formData.honeypot}
-                onChange={handleInputChange}
-                className="hidden"
-                tabIndex={-1}
-                autoComplete="off"
-              />
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full md:w-auto px-8 py-4 border border-purple-500 bg-purple-500/20 text-white font-semibold rounded-lg shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:bg-purple-500/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-[#050505] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
-              </button>
 
-              {showSubmitModal && (
-                <div className="mt-6 rounded-3xl border border-green-500/20 bg-green-500/10 p-5 text-center shadow-lg shadow-green-500/10">
-                  <p className="text-sm font-semibold text-green-100 mb-4">
+                {/* Row 2: teléfono */}
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Teléfono
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                    placeholder="+56 9 1234 5678"
+                  />
+                </div>
+
+                {/* Row 3: mensaje — grows to fill remaining height */}
+                <div className="flex flex-col flex-1">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Mensaje *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    required
+                    className="w-full flex-1 min-h-[140px] px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent resize-none"
+                    placeholder="Cuéntanos sobre tu proyecto o consulta..."
+                  />
+                </div>
+
+                {/* Honeypot for anti-spam */}
+                <input
+                  type="text"
+                  name="honeypot"
+                  value={formData.honeypot}
+                  onChange={handleInputChange}
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full md:w-auto px-8 py-4 border border-purple-500 bg-purple-500/20 text-white font-semibold rounded-lg shadow-[0_0_15px_rgba(168,85,247,0.4)] hover:bg-purple-500/30 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-[#050505] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Enviando..." : "Enviar Mensaje"}
+                </button>
+
+                {showSubmitModal && (
+                  <div className="rounded-3xl border border-green-500/20 bg-green-500/10 p-5 text-center shadow-lg shadow-green-500/10">
+                    <p className="text-sm font-semibold text-green-100 mb-4">
+                      {submitMessage}
+                    </p>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setShowSubmitModal(false);
+                        setSubmitMessage("");
+                      }}
+                      className="inline-flex items-center justify-center rounded-full bg-green-400 px-5 py-2 text-sm font-semibold text-black transition hover:bg-green-300"
+                    >
+                      OK
+                    </button>
+                  </div>
+                )}
+
+                {!showSubmitModal && submitMessage && (
+                  <p
+                    className={`text-center text-sm ${submitMessage.includes("exitosamente") ? "text-green-400" : "text-red-400"}`}
+                  >
                     {submitMessage}
                   </p>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowSubmitModal(false);
-                      setSubmitMessage("");
-                    }}
-                    className="inline-flex items-center justify-center rounded-full bg-green-400 px-5 py-2 text-sm font-semibold text-black transition hover:bg-green-300"
-                  >
-                    OK
-                  </button>
-                </div>
-              )}
+                )}
+              </form>
+            </div>
 
-              {!showSubmitModal && submitMessage && (
-                <p
-                  className={`text-center text-sm ${submitMessage.includes("exitosamente") ? "text-green-400" : "text-red-400"}`}
-                >
-                  {submitMessage}
-                </p>
-              )}
-            </form>
+            {/* Mapa — right column, spans full height */}
+            <div className="lg:col-span-2 min-h-[400px]">
+              <ContactMap />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 8. FOOTER */}
-      <footer className="border-t border-white/10 py-12 relative z-10 bg-black">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
-          <div className="flex gap-6 mb-8">
-            <a
-              href="https://github.com/LiteStartsUp"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors"
-            >
-              <Code className="w-6 h-6" />
-            </a>
-            <a
-              href="https://fpereiradev.sppa.cl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 rounded-full bg-white/5 hover:bg-white/10 text-gray-300 hover:text-white transition-colors"
-            >
-              <Globe className="w-6 h-6" />
+      {/* 7. FOOTER */}
+      <footer className="relative z-10 bg-[#030303] border-t border-white/10 overflow-hidden">
+
+        {/* Glow decorativo */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent pointer-events-none"></div>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] h-[80px] bg-purple-600/10 blur-[40px] pointer-events-none"></div>
+
+        {/* Stats Bar */}
+        <div className="border-b border-white/5 py-10">
+          <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-3 gap-6 text-center">
+              <div className="group cursor-default">
+                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-purple-400 group-hover:to-purple-600 transition-all duration-300">8</p>
+                <p className="text-xs text-gray-600 mt-2 uppercase tracking-widest">Talentos</p>
+              </div>
+              <div className="border-x border-white/5 group cursor-default">
+                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-blue-400 group-hover:to-blue-600 transition-all duration-300">4</p>
+                <p className="text-xs text-gray-600 mt-2 uppercase tracking-widest">Países</p>
+              </div>
+              <div className="group cursor-default">
+                <p className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-br from-white to-gray-400 group-hover:from-orange-400 group-hover:to-orange-600 transition-all duration-300">100%</p>
+                <p className="text-xs text-gray-600 mt-2 uppercase tracking-widest">Remoto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Main Footer Content */}
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-[1.4fr_1fr_1fr] gap-12 lg:gap-16">
+
+            {/* Col 1: Brand */}
+            <div className="flex flex-col gap-6">
+              <Link href="/" className="flex items-center gap-3 group w-fit">
+                <div className="relative w-10 h-10 overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 via-blue-600 to-orange-500 p-0.5">
+                  <div className="w-full h-full bg-black rounded-md flex items-center justify-center">
+                    <Image src="/LogoLiteStartsUp.png" alt="LiteStartsUp Logo" width={32} height={32} className="object-contain transition-transform group-hover:scale-110" />
+                  </div>
+                </div>
+                <span className="text-xl font-bold text-white tracking-tight">LiteStartsUp</span>
+              </Link>
+              <p className="text-gray-500 text-sm leading-relaxed font-light max-w-xs">
+                Transformamos ideas audaces en plataformas digitales de alto impacto. Talento global, mismo ADN.
+              </p>
+
+              {/* Social links agrupados por entidad */}
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] text-gray-700 uppercase tracking-widest w-24 shrink-0">LiteStartsUp</span>
+                  <div className="flex gap-2">
+                    <a href="https://github.com/LiteStartsUp" target="_blank" rel="noopener noreferrer" aria-label="GitHub de LiteStartsUp"
+                      className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-gray-500 hover:text-white transition-all duration-200 border border-white/5 hover:border-white/20">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/litestartsup/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de LiteStartsUp"
+                      className="p-2 rounded-lg bg-white/5 hover:bg-[#0A66C2]/20 text-gray-500 hover:text-[#0A66C2] transition-all duration-200 border border-white/5 hover:border-[#0A66C2]/30">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-[10px] text-gray-700 uppercase tracking-widest w-24 shrink-0">Sociedad PA</span>
+                  <div className="flex gap-2">
+                    <a href="https://www.linkedin.com/company/sociedad-de-profesionales-familia-pereira-alarc%C3%B3n/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Sociedad PA"
+                      className="p-2 rounded-lg bg-white/5 hover:bg-[#0A66C2]/20 text-gray-500 hover:text-[#0A66C2] transition-all duration-200 border border-white/5 hover:border-[#0A66C2]/30">
+                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://sppa.cl/" target="_blank" rel="noopener noreferrer" aria-label="Sitio web Sociedad PA"
+                      className="p-2 rounded-lg bg-white/5 hover:bg-white/15 text-gray-500 hover:text-white transition-all duration-200 border border-white/5 hover:border-white/20">
+                      <Globe className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Col 2: Navigation */}
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-gray-600 font-semibold mb-6">Navegación</p>
+              <ul className="space-y-4">
+                {[
+                  { label: "Filosofía", href: "#filosofia" },
+                  { label: "Equipo", href: "#equipo" },
+                  { label: "#WomensUP", href: "#womensup" },
+                  { label: "Metodología", href: "#metodologia" },
+                  { label: "Únete al Equipo", href: "#jointeam" },
+                ].map(link => (
+                  <li key={link.href}>
+                    <Link href={link.href} className="text-gray-500 hover:text-white text-sm font-light transition-colors duration-200 flex items-center gap-2 group w-fit">
+                      <span className="w-0 group-hover:w-3 h-px bg-purple-500 transition-all duration-300 shrink-0"></span>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Col 3: Contact */}
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-gray-600 font-semibold mb-6">Contacto</p>
+              <div className="space-y-5">
+                <p className="text-gray-500 text-sm font-light leading-relaxed">¿Tienes un proyecto o consulta? Escríbenos directamente.</p>
+                <a
+                  href="mailto:contacto@sppa.cl"
+                  className="inline-flex items-center gap-2 text-sm text-purple-400 hover:text-purple-300 transition-colors duration-200 font-medium group"
+                >
+                  <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  contacto@sppa.cl
+                </a>
+                <div className="pt-2">
+                  <p className="text-[10px] text-gray-700 uppercase tracking-widest mb-3">Operamos desde</p>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <div className="flex items-center gap-1.5 group cursor-default">
+                      <img src="/flags/chile.webp" alt="Chile" width={20} height={15} className="rounded-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <span className="text-xs text-gray-700 group-hover:text-gray-400 transition-colors">Chile</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 group cursor-default">
+                      <img src="/flags/argentina.png" alt="Argentina" width={20} height={15} className="rounded-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <span className="text-xs text-gray-700 group-hover:text-gray-400 transition-colors">Argentina</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 group cursor-default">
+                      <img src="/flags/colombia.png" alt="Colombia" width={20} height={15} className="rounded-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <span className="text-xs text-gray-700 group-hover:text-gray-400 transition-colors">Colombia</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 group cursor-default">
+                      <img src="/flags/Mexico.webp" alt="México" width={20} height={15} className="rounded-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <span className="text-xs text-gray-700 group-hover:text-gray-400 transition-colors">México</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 group cursor-default">
+                      <img src="/flags/rd.svg" alt="Rep. Dominicana" width={20} height={15} className="rounded-sm opacity-60 group-hover:opacity-100 transition-opacity" />
+                      <span className="text-xs text-gray-700 group-hover:text-gray-400 transition-colors">Rep. Dom.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-white/5">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-3">
+            <p className="text-xs text-gray-700">
+              &copy; {new Date().getFullYear()} LiteStartsUp — Sociedad de Profesionales PA. Todos los derechos reservados.
+            </p>
+            <a href="https://sppa.cl/" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-700 hover:text-gray-500 transition-colors font-light tracking-wide">
+              sppa.cl
             </a>
           </div>
-
-          <h2 className="text-2xl font-bold tracking-tighter text-white mb-2">
-            LiteStartUp
-          </h2>
-          <p className="text-gray-400 font-light mb-8 max-w-md">
-            ¡Gracias por confiar en el proyecto y ser parte de este increíble
-            equipo!
-          </p>
-
-          <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
-
-          <p className="text-sm text-gray-600">
-            &copy; {new Date().getFullYear()} LiteStartUp - Sociedad PA. Todos
-            los derechos reservados.
-          </p>
         </div>
+
       </footer>
     </main>
   );

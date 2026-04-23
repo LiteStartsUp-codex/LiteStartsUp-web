@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx shadcn@latest add @mapcn/mapy)",
+      "Bash(npm info *)",
+      "WebFetch(domain:mapcn.dev)"
+    ]
+  }
+}

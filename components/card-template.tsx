@@ -50,7 +50,7 @@ const CardTemplate = forwardRef<CardTemplateRef, CardTemplateProps>(
       // Load and draw real logo
       const logoImg = new Image();
       logoImg.crossOrigin = "anonymous";
-      logoImg.src = "/logo.png";
+      logoImg.src = "/LogoLiteStartsUp.png";
       
       await new Promise<void>((resolve) => {
         logoImg.onload = () => resolve();
@@ -78,7 +78,7 @@ const CardTemplate = forwardRef<CardTemplateRef, CardTemplateProps>(
       // Company text
       ctx.fillStyle = variant === "dark" ? "#ffffff" : "#000000";
       ctx.font = 'bold 50px sans-serif';
-      ctx.fillText("LITESTARTUP", FRONT_CENTER, 400);
+      ctx.fillText("LITESTARTSUP", FRONT_CENTER, 400);
       
       ctx.fillStyle = "#888888";
       ctx.font = '28px monospace';

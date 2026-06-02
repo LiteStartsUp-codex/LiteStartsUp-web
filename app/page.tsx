@@ -131,15 +131,7 @@ const teamMembers: TeamMember[] = [
     country: "Argentina",
     flagPath: "/flags/argentina.png",
   },
-  {
-    name: "Lessli Álvarez",
-    role: "Desarrolladora Java",
-    description: "Desarrollo de aplicaciones robustas y escalables con arquitecturas Java de alto rendimiento.",
-    avatarColor: "from-yellow-500 to-amber-600",
-    image: "/team/Lessli.png",
-    country: "México",
-    flagPath: "/flags/Mexico.webp",
-  },
+ 
 ];
 
 const workflowSteps: WorkflowStep[] = [
